@@ -2,66 +2,34 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3ec">
-  <meta name="description" content="组合活动分级领取静态交互原型，按领取结果、参与流程、抽奖、等级、时间异常与跳转浏览演示场景。">
-  <title>组合活动分级领取 · 全场景预览</title>
-  <link rel="stylesheet" href="assets/css/catalog.css">
-  <script src="js/catalog-data.js" defer></script>
-  <script src="js/catalog.js" defer></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>组合活动 · 页面状态连线图</title>
+  <link rel="stylesheet" href="styles.css">
+<style>.flow-link{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid #d6d9df;border-radius:5px;color:#44566b;background:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.flow-link:hover{background:#eef1f5}@media(max-width:760px){.flow-link{padding:7px 8px;font-size:12px}}</style>
 </head>
 <body>
-  <a class="skip-link" href="#scenario-list">跳到场景列表</a>
-  <div class="catalog-shell">
-    <header class="catalog-header">
-      <a class="catalog-brand" href="index.html" aria-label="全场景预览首页"><span class="brand-mark" aria-hidden="true">礼</span><span>活动中心<span class="brand-divider" aria-hidden="true"> / </span>交互原型</span></a>
-      <span class="mock-badge">静态 Mock 演示</span>
-    </header>
-
-    <main>
-      <section class="catalog-intro" aria-labelledby="page-title">
-        <div class="intro-copy">
-          <p class="eyebrow">秋日车主关怀季 · 全场景预览</p>
-          <h1 id="page-title">组合活动分级领取</h1>
-          <p class="intro-description">选择一个场景，查看领券、抽奖与等级解锁的完整体验。</p>
-          <div class="intro-actions">
-            <a class="button button-primary" href="activity.html?scene=bound-lottery#activity">进入活动政策页 <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="activity.html?scene=folded-preview#result">查看已领活动折叠效果</a>
-          </div>
-        </div>
-        <aside class="preview-notes" aria-label="本版查看要点">
-          <p class="notes-title">本版查看要点</p>
-          <ul>
-            <li>已领活动默认仅展示首个，其余可展开</li>
-            <li>认证分组在绑车分组之前</li>
-            <li>已领券直接使用，无额外激活流程</li>
-          </ul>
-        </aside>
-      </section>
-
-      <p class="demo-notice"><span class="notice-label">演示说明</span>所有状态均在本地模拟，不连接真实接口，不发生真实发券。刷新页面会恢复该场景的初始状态。</p>
-
-      <section class="catalog-browser" aria-labelledby="scenarios-title">
-        <div class="browser-heading">
-          <div><h2 id="scenarios-title">场景导航</h2><p id="scenario-count" class="scenario-count" role="status" aria-live="polite">正在载入场景…</p></div>
-          <form class="search-form" role="search" id="search-form">
-            <label for="scenario-search">搜索场景</label>
-            <div class="search-field"><span aria-hidden="true">⌕</span><input id="scenario-search" type="search" placeholder="搜索：零领取、抽奖、未开始…" autocomplete="off"><button id="clear-search" type="button" hidden aria-label="清空搜索">清空</button></div>
-          </form>
-        </div>
-
-        <div id="category-filters" class="category-filters" role="group" aria-label="按场景分类筛选"></div>
-        <ul id="scenario-list" class="scenario-grid" aria-label="演示场景" tabindex="-1"></ul>
-        <div id="empty-state" class="empty-state" hidden>
-          <h3>没有找到匹配的场景</h3>
-          <p>试试其他关键词，或查看全部场景。</p>
-          <button class="button button-secondary" type="button" id="reset-filters">查看全部场景</button>
-        </div>
-        <noscript><p class="demo-notice">请开启 JavaScript 以使用分类与搜索，也可通过上方入口直接查看原型。</p></noscript>
-      </section>
-    </main>
-
-    <footer class="catalog-footer"><span>组合活动分级领取 · 全场景交互原型</span><span>仅用于方案查看与交互演示</span></footer>
-  </div>
+  <header class="toolbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">⌘</span><div><h1>组合活动 · 页面状态连线图</h1><p>四组页面状态直接展示，沿箭头阅读</p></div></div>
+    <nav id="section-nav" aria-label="流程片区"></nav>
+    <a class="flow-link" href="flows.html">业务流程图</a>
+    <button id="list-toggle" class="tool-button" aria-expanded="false" aria-controls="page-list">页面清单</button>
+  </header>
+  <main id="viewport" tabindex="0" aria-label="无限画布，拖动平移，滚轮缩放">
+    <div id="world"><div id="sections"></div><svg id="connections" xmlns="http://www.w3.org/2000/svg" aria-label="页面之间的跳转条件"></svg><div id="nodes"></div></div>
+    <div id="empty" hidden>页面状态正在准备中</div>
+  </main>
+  <aside id="page-list" hidden aria-label="页面清单">
+    <div class="list-head"><strong>查找页面</strong><button id="list-close" class="icon-button" aria-label="关闭清单">×</button></div>
+    <label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索页面状态…" autocomplete="off"></label>
+    <div id="search-results"></div>
+  </aside>
+  <footer class="canvas-tools">
+    <span class="canvas-hint">拖拽平移 · 滚轮缩放</span>
+    <div class="zoom-tools"><button id="fit-all" title="查看整张图">全图</button><button id="zoom-out" aria-label="缩小">−</button><button id="zoom-reset" title="以100%查看当前位置">100%</button><button id="zoom-in" aria-label="放大">＋</button></div>
+  </footer>
+  <div id="status" class="status" aria-live="polite"></div>
+  <script src="screen-manifest.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
