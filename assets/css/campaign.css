@@ -1,0 +1,217 @@
+/* Autumn service campaign skin. Local mock presentation; all mechanics remain in app.js. */
+:root {
+  --campaign-red: #b83e32;
+  --campaign-red-dark: #8e2c25;
+  --campaign-gold: #a6783e;
+  --campaign-ink: #332923;
+  --campaign-muted: #857a72;
+  --campaign-paper: #fbf8f3;
+  --campaign-line: #e9e0d6;
+  --brand: #b83e32;
+  --brand-dark: #8e2c25;
+}
+html, body { background: #e8e4dd; }
+body { color: var(--campaign-ink); }
+.phone-page { box-shadow: 0 8px 48px #43352814; }
+.phone-page .top-bar { background: #fffefa; border-bottom-color: #ece6de; backdrop-filter: none; }
+.top-bar h1 { color: #332923; font-size: 16px; font-weight: 600; }
+.phone-page .primary-button { border-radius: 9px; background: var(--campaign-red); box-shadow: none; }
+.phone-page .primary-button:active { background: var(--campaign-red-dark); }
+.phone-page .secondary-button { border-radius: 9px; }
+.policy-page { background: #f5eee3; }
+.policy-page .policy-content { padding: 0 0 max(24px, env(safe-area-inset-bottom)); }
+.policy-materials { gap: 16px; }
+.policy-material { text-align: left; color: var(--campaign-ink); }
+.policy-material:not(button) { cursor: default; }
+.policy-material:focus-visible { outline-color: var(--campaign-red); outline-offset: -4px; }
+.policy-material--hero { width: 100%; height: 348px; margin: 0; isolation: isolate; }
+.policy-material--hero > img { width: 100%; height: 100%; object-fit: cover; object-position: 64% center; }
+.policy-material--hero::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #172628b8 0, #1726284a 44%, transparent 72%); pointer-events: none; }
+.campaign-material-copy { position: absolute; top: 27px; left: 25px; right: 20px; z-index: 1; color: #fff8e9; }
+.campaign-eyebrow { display: block; margin: 0; color: var(--campaign-gold); font-size: 10px; font-weight: 650; line-height: 1.5; letter-spacing: 1.5px; }
+.campaign-material-copy .campaign-eyebrow { color: #f0d6af; letter-spacing: 2.4px; }
+.campaign-material-copy h2 { margin: 13px 0 9px; font-size: 33px; line-height: 1.25; font-weight: 700; letter-spacing: 1px; white-space: pre-line; text-shadow: 0 2px 12px #19282640; }
+.campaign-material-copy p { margin: 0; color: #fff3dd; font-size: 13px; line-height: 1.6; letter-spacing: 1px; }
+.campaign-period { display: inline-block; margin-top: 16px; padding: 4px 9px; border: 1px solid #ead5b966; border-radius: 3px; color: #f9edda; font-size: 10px; line-height: 1.4; letter-spacing: .6px; }
+.policy-material--ribbon { display: flex; align-items: center; justify-content: space-between; width: calc(100% - 32px); min-height: 96px; margin: -32px 16px 0; padding: 18px 20px; border: 1px solid #c57a50; border-radius: 10px; background: var(--campaign-red); color: #fff; z-index: 2; box-shadow: 0 8px 18px #8236281a; }
+.policy-material--ribbon > img { display: none; }
+.campaign-participate-copy { display: grid; gap: 3px; }
+.campaign-participate-copy > span { color: #f8d4bc; font-size: 10px; letter-spacing: 1.5px; }
+.campaign-participate-copy strong { display: block; color: #fff6df; font-size: 23px; line-height: 1.3; letter-spacing: 2px; }
+.campaign-participate-copy small { display: block; color: #ffe4d0; font-size: 11px; line-height: 1.4; }
+.campaign-arrow { display: grid; width: 34px; height: 34px; flex: 0 0 34px; place-items: center; border: 1px solid #f0b48b; border-radius: 50%; color: #fff6df; font-size: 24px; line-height: 1; }
+.policy-material--poster { width: calc(100% - 32px); height: auto; margin: 0 16px; padding: 24px 18px 20px; border: 1px solid #e5d7c3; border-radius: 10px; background: #fffcf6; }
+.policy-material--poster > img { display: none; }
+.campaign-poster-copy h2, .campaign-shop-copy h2, .campaign-rules h2 { margin: 7px 0 7px; font-size: 24px; line-height: 1.35; font-weight: 650; letter-spacing: .5px; }
+.campaign-poster-copy > p { margin: 0; color: #8a7866; font-size: 12px; line-height: 1.7; }
+.campaign-poster-copy h2 { white-space: pre-line; }
+.campaign-benefits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 23px; padding-top: 19px; border-top: 1px solid var(--campaign-line); }
+.campaign-benefits article { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 0 7px; text-align: center; }
+.campaign-benefits article + article { border-left: 1px solid var(--campaign-line); }
+.campaign-benefits b { color: #bc9b72; font-size: 11px; font-weight: 500; letter-spacing: 2px; }
+.campaign-benefits strong { color: #9a4633; font-size: 17px; line-height: 1.5; font-weight: 650; }
+.campaign-benefits span { color: #8a7866; font-size: 10px; line-height: 1.6; overflow-wrap: anywhere; }
+.policy-material--shop { width: calc(100% - 32px); height: 184px; margin: 0 16px; border-radius: 10px; background: #293536; isolation: isolate; }
+.policy-material--shop > img { width: 100%; height: 100%; object-fit: cover; object-position: 55% center; }
+.policy-material--shop::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #182d33bd, #182d3314); z-index: 0; }
+.campaign-shop-copy { position: absolute; z-index: 1; inset: 24px 20px; color: #fff9ee; }
+.campaign-shop-copy .campaign-eyebrow { color: #e6c698; }
+.campaign-shop-copy h2 { max-width: 230px; font-size: 23px; }
+.campaign-shop-copy p { max-width: 220px; margin: 7px 0 0; color: #f1e6d3; font-size: 11px; line-height: 1.7; }
+.campaign-rules { margin: 0 16px; padding: 24px 18px 18px; border: 1px solid #e8dfd2; border-radius: 10px; background: #fbf7ef; }
+.campaign-rules h2 { font-size: 18px; }
+.campaign-rules ol { margin: 13px 0 0; padding-left: 17px; }
+.campaign-rules li { margin: 7px 0; padding-left: 2px; color: #86786a; font-size: 11px; line-height: 1.8; }
+.campaign-fineprint { margin: 16px 0 0; padding-top: 13px; border-top: 1px solid #e8dfd2; color: #a0968b; font-size: 10px; line-height: 1.65; }
+
+/* The result stays an activity list, with a single shared instruction per unlock group. */
+.result-page { background: var(--campaign-paper); }
+.legacy-result-content { padding: 0 12px max(24px, env(safe-area-inset-bottom)); }
+.campaign-result-summary { position: relative; min-height: 130px; display: grid; grid-template-columns: 43px minmax(0, 1fr); column-gap: 12px; align-content: center; margin: 0 3px; padding: 23px 5px; }
+.campaign-result-check { grid-column: 1; grid-row: 1 / span 2; display: grid; width: 40px; height: 40px; align-self: center; place-items: center; border: 1px solid #b94a33; border-radius: 50%; background: #fff2e9; color: var(--campaign-red); font-size: 22px; }
+.campaign-result-summary h2 { grid-column: 2; margin: 0 0 5px; font-size: 22px; line-height: 1.35; font-weight: 650; letter-spacing: .5px; }
+.campaign-result-summary p { grid-column: 2; margin: 0; color: var(--campaign-muted); font-size: 12px; line-height: 1.6; }
+.campaign-result-summary > div { grid-column: 2; grid-row: 1 / span 2; min-width: 0; align-self: center; }
+.legacy-activity-stack { display: grid; gap: 12px; }
+.ready-activities { display: grid; gap: 12px; }
+.other-ready-activities[hidden] { display: none; }
+.ready-activities-toggle { display: block; width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid #e5d5c5; border-radius: 8px; background: #fffaf4; color: #8d6347; font: inherit; font-size: 13px; cursor: pointer; }
+.ready-activities-toggle::after { content: '⌄'; display: inline-block; margin-left: 7px; }
+.ready-activities-toggle[aria-expanded='true']::after { transform: rotate(180deg); }
+.ready-activities-toggle:focus-visible { outline: 2px solid #a2593d; outline-offset: 2px; }
+.legacy-activity { min-width: 0; overflow: hidden; border: 1px solid #eee5db; border-radius: 10px; background: #fff; }
+.legacy-activity h2 { display: flex; align-items: center; gap: 7px; margin: 0; padding: 17px 13px 4px; color: var(--campaign-ink); font-size: 15px; font-weight: 650; line-height: 1.5; text-align: left; }
+.legacy-activity h2 { padding-bottom: 8px; }
+.activity-kind { flex-shrink: 0; padding: 2px 5px; border-radius: 3px; background: #fbede5; color: #b65a3f; font-size: 9px; line-height: 1.5; font-weight: 600; }
+.activity-subtitle { margin: 0 13px 13px; color: #9b8d81; font-size: 11px; line-height: 1.6; }
+.legacy-coupon-list { gap: 9px; padding: 8px 12px 13px; }
+.legacy-coupon { position: relative; gap: 8px; min-height: 120px; padding: 11px 12px 10px; overflow: hidden; border: 1px solid #efd6c4; border-radius: 7px; background: #fff8ef; }
+.legacy-coupon::before, .legacy-coupon::after { position: absolute; right: 85px; z-index: 1; width: 10px; height: 10px; border: 1px solid #efd6c4; border-radius: 50%; background: #fff; content: ''; }
+.legacy-coupon::before { top: -6px; }
+.legacy-coupon::after { bottom: -6px; }
+.legacy-coupon-copy { gap: 3px; align-self: stretch; flex: 1 1 auto; color: var(--campaign-ink); }
+.legacy-coupon-copy .coupon-amount { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; margin: 0; color: var(--campaign-red); }
+.legacy-coupon-copy .coupon-amount > strong { color: inherit; font-family: 'Arial', 'Helvetica Neue', sans-serif; font-size: 31px; font-weight: 700; line-height: 1.05; letter-spacing: -1px; }
+.legacy-coupon-copy .coupon-amount > em { color: inherit; font-size: 13px; font-weight: 600; line-height: 1.4; font-style: normal; }
+.legacy-coupon-copy .coupon-name { color: #665045; font-size: 12px; line-height: 1.5; font-weight: 600; }
+.legacy-coupon-copy .coupon-rule { color: #9a7e6b; font-size: 10px; line-height: 1.5; }
+.legacy-coupon-copy .coupon-valid { margin-top: 3px; color: #ad9785; font-size: 9px; line-height: 1.4; }
+.legacy-coupon-control { align-self: stretch; justify-content: center; flex: 0 0 78px; gap: 7px; margin: -11px -4px -10px 0; padding-left: 9px; border-left: 1px dashed #e4c8af; }
+.legacy-coupon-button { min-height: 31px; padding: 5px 2px; border: 0; border-radius: 5px; background: var(--campaign-red); color: #fff9f2; font-size: 11px; line-height: 1.5; font-weight: 600; white-space: nowrap; }
+.legacy-coupon-button:active:not(:disabled) { background: var(--campaign-red-dark); }
+.legacy-coupon-button:disabled { background: #eaddce; color: #a28b77; cursor: default; }
+.legacy-coupon-state { padding: 0; background: transparent; color: #a17a60; font-size: 9px; line-height: 1.4; }
+.legacy-coupon[data-status='inactive'] .legacy-coupon-button { border: 1px solid #bb6550; background: #fffaf3; color: #ae4c36; }
+.legacy-coupon.is-locked { border-color: #e3e3e3; background: #fff; }
+.legacy-coupon.is-locked .legacy-coupon-button { border: 1px solid #dedede; background: #f3f3f3; color: #737373; }
+.legacy-coupon.is-locked::before, .legacy-coupon.is-locked::after { border-color: #e3e3e3; }
+/* Configured artwork is not recolored, dimmed, cropped or covered by lock UI. */
+.legacy-coupon[data-coupon-image='true'] { gap: 0; padding: 0; background: #fff; }
+.legacy-coupon[data-coupon-image='true']::before, .legacy-coupon[data-coupon-image='true']::after { content: none; }
+.legacy-coupon-visual { display: flex; align-items: center; flex: 1 1 auto; min-width: 0; padding: 10px; }
+.legacy-coupon-visual img { display: block; width: 100%; height: auto; max-height: 180px; object-fit: contain; filter: none; opacity: 1; mix-blend-mode: normal; }
+.legacy-coupon[data-coupon-image='true'] .legacy-coupon-control { flex: 0 0 88px; margin: 0; padding: 12px 8px; border-left: 1px solid #e5e5e5; }
+.legacy-coupon[data-status='expired'] { border-color: #e9e5e0; background: #f6f5f2; }
+.legacy-coupon[data-status='expired'] .coupon-amount, .legacy-coupon[data-status='expired'] .coupon-name { color: #a9a49c; }
+.legacy-coupon[data-status='expired'] .coupon-rule, .legacy-coupon[data-status='expired'] .coupon-valid, .legacy-coupon[data-status='expired'] .legacy-coupon-state { color: #b2aca4; }
+.legacy-coupon[data-status='expired'] .legacy-coupon-control { border-left-color: #ddd7ce; }
+.legacy-coupon[data-status='expired'] .legacy-coupon-button { border: 0; background: #e7e4df; color: #aaa298; }
+.legacy-coupon[data-status='expired']::before, .legacy-coupon[data-status='expired']::after { border-color: #e9e5e0; }
+.legacy-expand { min-height: 39px; border-top: 1px solid #f0e8df; background: #fff; color: #9b816a; font-size: 11px; letter-spacing: .5px; }
+.legacy-expand::after { content: '⌄'; display: inline-block; margin-left: 5px; font-size: 13px; }
+.legacy-expand[aria-expanded='true']::after { transform: rotate(180deg); }
+.legacy-draw-note { padding: 3px 13px 2px; color: #b47e54; font-size: 11px; line-height: 1.6; text-align: left; }
+.legacy-unlock-note { padding: 2px 13px 13px; color: #ad8a66; font-size: 11px; line-height: 1.6; }
+.legacy-countdown { margin: 0; padding: 0 13px 13px; color: #a68a6a; font-size: 11px; line-height: 1.6; }
+.legacy-result-notice { margin: 14px 0; border: 1px solid #eaddcd; border-radius: 7px; background: #fffaf3; color: #887565; font-size: 12px; line-height: 1.6; }
+.unlock-group { margin-top: 16px; overflow: hidden; border: 1px solid #dfd0b9; border-radius: 12px; background: #f6edde; }
+.unlock-group.is-verified { border-color: #e0cbb8; background: #f6eae0; }
+.unlock-group-header { display: grid; grid-template-columns: 29px minmax(0, 1fr) auto; align-items: center; gap: 9px; padding: 20px 13px 9px; }
+.unlock-group-icon { display: grid; width: 29px; height: 34px; align-self: start; margin-top: 3px; place-items: center; border: 1px solid #bd9c72; border-radius: 8px; background: #fdf6e9; color: #a57943; font-size: 15px; line-height: 1; }
+.is-verified .unlock-group-icon { border-color: #c69c82; background: #fdf3e9; color: #ae7757; }
+.unlock-group-copy { min-width: 0; }
+.unlock-group-copy .campaign-eyebrow { margin-bottom: 4px; color: #aa8963; font-size: 8px; letter-spacing: 1px; }
+.unlock-group-copy h2 { margin: 0; color: #765536; font-size: 17px; font-weight: 650; line-height: 1.45; }
+.unlock-group-copy p { margin: 5px 0 0; color: #a28b73; font-size: 10px; line-height: 1.6; }
+.unlock-group-action { min-height: 33px; padding: 7px 11px; border: 1px solid #b18b60; border-radius: 5px; background: #a47b4c; color: #fff8ec; font-size: 12px; line-height: 1.5; font-weight: 600; white-space: nowrap; cursor: pointer; }
+.is-verified .unlock-group-action { border-color: #a45b40; background: #a65d43; }
+.unlock-group-action:active { filter: brightness(.92); }
+.unlock-group-footnote { margin: 0; padding: 0 13px 15px; color: #9c846c; font-size: 10px; line-height: 1.6; }
+.unlock-group-activities { display: grid; gap: 9px; padding: 0 9px 10px; }
+.unlock-group-activities .legacy-activity { border-color: #e9decf; border-radius: 8px; }
+.unlock-group-activities .legacy-activity h2 { padding: 14px 11px 3px; font-size: 14px; }
+.unlock-group-activities .activity-subtitle { margin: 0 11px 9px; }
+.unlock-group-activities .legacy-coupon-list { padding: 7px 10px 10px; }
+.unlock-group-activities .legacy-coupon { min-height: 119px; padding-left: 10px; }
+.unlock-group-activities .legacy-coupon-copy .coupon-amount > strong { font-size: 28px; }
+.unlock-group-activities .activity-kind { font-size: 8px; }
+.campaign-more-title { margin: 9px 1px -2px; padding: 12px 0 0; color: #a7998b; font-size: 12px; line-height: 1.5; font-weight: 500; }
+.legacy-activity[data-time-status='upcoming'] { border-color: #e8e3da; background: #fcfbf8; }
+.legacy-activity[data-time-status='upcoming'] h2 { color: #968877; }
+.legacy-activity[data-time-status='upcoming'] .activity-kind { background: #f0ede7; color: #ac9d8a; }
+.legacy-activity[data-time-status='upcoming'] .legacy-coupon[data-status='unclaimed'] { border-color: #e7dfd2; background: #f8f5ee; }
+.legacy-activity[data-time-status='upcoming'] .legacy-coupon[data-status='unclaimed'] .coupon-amount { color: #ac9980; }
+
+/* Secondary steps use the same quiet service-campaign visual language. */
+.coupon-rule, .coupon-valid, .legacy-coupon-state, .unlock-group-copy p, .unlock-group-footnote { text-wrap: pretty; }
+.legacy-coupon-copy .coupon-name { font-size: 13px; }
+.legacy-coupon, .unlock-group-activities .legacy-coupon { min-height: 103px; }
+.campaign-locked-empty { padding: 28px 17px 10px; text-align: center; }
+.campaign-locked-empty > span { display: grid; width: 48px; height: 48px; margin: 0 auto 12px; place-items: center; border: 1px solid #e2c7ad; border-radius: 50%; color: #a77850; background: #fff4e6; font-size: 29px; }
+.campaign-locked-empty h2 { margin: 0 0 10px; font-size: 21px; font-weight: 600; color: #694c39; }
+.campaign-locked-empty p { margin: 5px 0; color: #897565; font-size: 12px; line-height: 1.8; }
+.legacy-coupon-copy .coupon-rule { color: #806954; font-size: 11px; }
+.legacy-coupon-copy .coupon-valid { color: #776c62; font-size: 10px; }
+.legacy-coupon-state { font-size: 10px; }
+.unlock-group-copy p, .unlock-group-footnote { color: #7f6852; font-size: 11px; }
+.unlock-group-copy .campaign-eyebrow { font-size: 10px; }
+.unlock-group-action { min-height: 38px; }
+.campaign-benefits strong { font-size: 15px; }
+.lottery-page, .upgrade-page, .login-content { background: var(--campaign-paper); }
+.lottery-cover { height: 172px; border-radius: 10px; box-shadow: none; }
+.lottery-panel, .lottery-result { padding: 24px 20px; border-color: #e8d9c5; border-radius: 12px; box-shadow: none; }
+.lottery-panel h2, .lottery-result h2 { color: var(--campaign-ink); font-size: 24px; }
+.lottery-prize-preview { border: 1px solid #ead9ba; border-radius: 8px; background: #fbf2e2; color: #a06b33; }
+.lottery-prize { border-radius: 8px; border-color: #ead7ba; }
+.lottery-result.is-won { border-color: #dfc49c; background: #fffbf4; }
+.lottery-footer { border-top-color: #ece4d8; background: #fffefa; }
+.login-content img { border-radius: 10px; }
+
+/* This entry follows all activity content; it never sticks to the viewport. */
+.coupon-center-entry { position: static; margin: 24px 0 4px; }
+.coupon-center-link { position: static; display: block; width: 100%; min-height: 46px; padding: 12px 20px; border: 1px solid #d8bfa6; border-radius: 8px; background: #fffefa; color: #8b5939; font: inherit; font-weight: 600; cursor: pointer; }
+.coupon-center-link:focus-visible { outline: 2px solid #a2593d; outline-offset: 3px; }
+.coupon-center-placeholder { padding: 72px 24px; text-align: center; color: #6e513b; }
+.coupon-center-placeholder > span { display: block; font-size: 48px; margin-bottom: 24px; }
+.coupon-center-placeholder h2 { font-size: 23px; margin-bottom: 16px; }
+.coupon-center-placeholder p { font-size: 14px; line-height: 1.8; color: #8b7768; }
+
+@media (min-width: 600px) {
+  .phone-page { margin-block: 24px; min-height: calc(100vh - 48px); border: 1px solid #e0d8cd; border-radius: 14px; }
+  .time-gate-page { min-height: 100vh; }
+}
+@media (max-width: 360px) {
+  .policy-material--hero { height: 326px; }
+  .campaign-material-copy { left: 21px; }
+  .campaign-material-copy h2 { font-size: 30px; }
+  .campaign-participate-copy strong { font-size: 21px; }
+  .campaign-benefits article { padding-inline: 5px; }
+  .campaign-benefits strong { font-size: 15px; }
+  .campaign-result-summary h2 { font-size: 20px; }
+  .legacy-result-content { padding-inline: 9px; }
+  .legacy-activity h2 { font-size: 14px; }
+  .legacy-coupon-list { padding-inline: 9px; }
+  .legacy-coupon { padding-left: 9px; }
+  .legacy-coupon-copy .coupon-amount > strong { font-size: 29px; }
+  .legacy-coupon-control { flex-basis: 70px; padding-left: 7px; }
+  .legacy-coupon::before, .legacy-coupon::after { right: 77px; }
+  .legacy-coupon-copy .coupon-name { font-size: 11px; }
+  .unlock-group-header { grid-template-columns: 24px minmax(0, 1fr) auto; gap: 7px; padding-inline: 11px; }
+  .unlock-group-icon { width: 24px; height: 29px; font-size: 13px; }
+  .unlock-group-copy h2 { font-size: 15px; }
+  .unlock-group-action { padding-inline: 9px; font-size: 11px; }
+  .unlock-group-activities { padding-inline: 7px; }
+  .unlock-group-activities .legacy-coupon-list { padding-inline: 8px; }
+  .unlock-group-activities .legacy-coupon-copy .coupon-amount > strong { font-size: 26px; }
+  .unlock-group-activities .legacy-activity h2 { gap: 5px; font-size: 13px; }
+}
