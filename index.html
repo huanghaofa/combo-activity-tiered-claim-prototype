@@ -2,34 +2,27 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>组合活动 · 页面状态连线图</title>
-  <link rel="stylesheet" href="styles.css">
-<style>.flow-link{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid #d6d9df;border-radius:5px;color:#44566b;background:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.flow-link:hover{background:#eef1f5}@media(max-width:760px){.flow-link{padding:7px 8px;font-size:12px}}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="2026年9月活动中心原型导航，包含组合活动分级领取与保客活动创建准入联动。">
+  <title>2026年9月 · 活动中心原型</title>
+  <style>
+    :root{color-scheme:light dark;--bg:#eef1f4;--surface:#fff;--text:#18202a;--muted:#66717d;--line:#cfd6dc;--accent:#1f5f78;--accent-soft:#dcebf0;--shadow:0 22px 60px rgba(40,59,70,.12)}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%}body{min-height:100dvh;color:var(--text);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}
+    .shell{width:min(1180px,calc(100% - 48px));min-height:100dvh;margin:0 auto;padding:34px 0 28px;display:grid;grid-template-rows:auto 1fr auto;gap:30px}.topbar{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:22px;border-bottom:1px solid var(--line);padding-bottom:18px}.wordmark{font-size:14px;font-weight:720;letter-spacing:.03em}.release{color:var(--muted);font-size:13px}
+    main{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:stretch;gap:20px}.intro,.prototype{border:1px solid var(--line);border-radius:16px;background:var(--surface)}.intro{grid-column:1/-1;padding:34px 38px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:42px;align-items:end;box-shadow:var(--shadow)}h1{max-width:690px;margin:0;font-size:clamp(34px,5vw,62px);line-height:1.05;letter-spacing:-.045em}.intro p{max-width:34ch;margin:0;color:var(--muted);font-size:16px;line-height:1.75}
+    .prototype{min-height:292px;padding:26px;display:grid;grid-template-rows:auto 1fr auto;gap:26px;text-decoration:none;position:relative;overflow:hidden;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}.prototype:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow)}.prototype:active{transform:translateY(-1px)}.prototype:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.prototype::after{content:"";position:absolute;inset:auto -50px -80px auto;width:210px;height:210px;border-radius:50%;background:var(--accent-soft);opacity:.72;pointer-events:none}.card-head{display:flex;align-items:center;gap:14px}.monogram{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:#f8fbfc;font-weight:760;font-size:18px}.card-head span:last-child{color:var(--muted);font-size:13px}h2{max-width:13ch;margin:0;font-size:clamp(25px,3vw,36px);line-height:1.18;letter-spacing:-.025em}.details{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:18px}.details p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}.open{flex:0 0 auto;color:var(--accent);font-weight:720;font-size:14px;white-space:nowrap}footer{display:flex;justify-content:space-between;gap:24px;color:var(--muted);font-size:12px;line-height:1.6}
+    @media(prefers-reduced-motion:reduce){.prototype{transition:none}.prototype:hover,.prototype:active{transform:none}}@media(prefers-color-scheme:dark){:root{--bg:#151a1f;--surface:#20282f;--text:#edf2f4;--muted:#a9b4bc;--line:#3a464f;--accent:#77bfd4;--accent-soft:#27434d;--shadow:0 22px 60px rgba(4,8,10,.34)}.monogram{color:#102027}}@media(max-width:767px){.shell{width:min(100% - 28px,620px);padding-top:18px;gap:18px}.topbar{min-height:56px;align-items:flex-start;flex-direction:column;gap:8px;padding-bottom:14px}main{grid-template-columns:1fr;gap:14px}.intro{padding:26px 22px;grid-template-columns:1fr;gap:18px}h1{font-size:clamp(34px,12vw,48px)}.intro p{max-width:30ch}.prototype{min-height:240px;padding:22px;gap:20px}h2{font-size:27px}footer{flex-direction:column;gap:6px}}
+  </style>
 </head>
 <body>
-  <header class="toolbar">
-    <div class="brand"><span class="brand-mark" aria-hidden="true">⌘</span><div><h1>组合活动 · 页面状态连线图</h1><p>四组页面状态直接展示，沿箭头阅读</p></div></div>
-    <nav id="section-nav" aria-label="流程片区"></nav>
-    <a class="flow-link" href="flows.html">业务流程图</a>
-    <button id="list-toggle" class="tool-button" aria-expanded="false" aria-controls="page-list">页面清单</button>
-  </header>
-  <main id="viewport" tabindex="0" aria-label="无限画布，拖动平移，滚轮缩放">
-    <div id="world"><div id="sections"></div><svg id="connections" xmlns="http://www.w3.org/2000/svg" aria-label="页面之间的跳转条件"></svg><div id="nodes"></div></div>
-    <div id="empty" hidden>页面状态正在准备中</div>
-  </main>
-  <aside id="page-list" hidden aria-label="页面清单">
-    <div class="list-head"><strong>查找页面</strong><button id="list-close" class="icon-button" aria-label="关闭清单">×</button></div>
-    <label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索页面状态…" autocomplete="off"></label>
-    <div id="search-results"></div>
-  </aside>
-  <footer class="canvas-tools">
-    <span class="canvas-hint">拖拽平移 · 滚轮缩放</span>
-    <div class="zoom-tools"><button id="fit-all" title="查看整张图">全图</button><button id="zoom-out" aria-label="缩小">−</button><button id="zoom-reset" title="以100%查看当前位置">100%</button><button id="zoom-in" aria-label="放大">＋</button></div>
-  </footer>
-  <div id="status" class="status" aria-live="polite"></div>
-  <script src="screen-manifest.js"></script>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <div class="shell">
+    <header class="topbar"><div class="wordmark">DFN 活动中心</div><div class="release">2026 年 9 月原型合集</div></header>
+    <main>
+      <section class="intro"><h1>2026年9月 · 活动中心原型</h1><p>选择一套原型进入。两套内容独立展示，均为静态评审版本。</p></section>
+      <a class="prototype" href="combo-activity/index.html" data-prototype="combo"><div class="card-head"><span class="monogram" aria-hidden="true">组</span><span>页面状态与业务流程</span></div><h2>组合活动分级领取</h2><div class="details"><p>4 组页面状态、12 个状态、13 条连线和 3 张业务流程图。</p><span class="open">打开原型 →</span></div></a>
+      <a class="prototype" href="retention-activity/index.html" data-prototype="retention"><div class="card-head"><span class="monogram" aria-hidden="true">保</span><span>交互原型与研发资料</span></div><h2>保客活动创建 · 准入联动</h2><div class="details"><p>交互原型、8 章文档、功能清单、流程图和下载资料。</p><span class="open">打开原型 →</span></div></a>
+    </main>
+    <footer><span>静态原型，仅用于产品与研发评审。</span><span>不连接真实业务接口。</span></footer>
+  </div>
 </body>
 </html>

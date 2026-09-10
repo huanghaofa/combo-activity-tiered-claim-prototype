@@ -1,0 +1,19 @@
+flowchart TD
+  entry([进入组合活动]) --> time{组合活动时间}
+  time -->|未开始| upcoming[活动暂未开启<br/>感谢关注]
+  time -->|已结束| ended[活动已结束<br/>感谢关注]
+  time -->|进行中| policy[展示配置图片及链接]
+  policy --> participate[点击立即参与]
+  participate --> gate{组合仍在进行中？}
+  gate -->|否| blocked[提示时间状态<br/>不发券、不抽奖]
+  gate -->|是| login{已登录？}
+  login -->|否| loginPage[引导登录]
+  loginPage -->|成功| identity
+  login -->|是| identity[调用 oneID<br/>获取 VIN 及用户等级]
+  identity --> valid{资格信息获取成功？}
+  valid -->|否| error[校验异常<br/>不发券、不抽奖]
+  error -->|重新校验| identity
+  valid -->|是| checks[逐个校验子活动<br/>人群、VIN及等级、时间]
+  checks --> classify[区分当前可参与、等级不足<br/>未开始及人群不匹配]
+  classify --> ordinary[先发符合条件的普通券<br/>已领取的不重复发放]
+  ordinary --> next([进入独立抽奖判断])

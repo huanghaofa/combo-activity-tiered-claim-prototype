@@ -1,0 +1,11 @@
+flowchart TD
+  start([每次参与均执行]) --> pending{有符合资格且<br/>未参加的抽奖活动？}
+  pending -->|有| lottery[进入对应抽奖页]
+  lottery --> draw[用户抽奖]
+  draw --> win{是否中奖？}
+  win -->|中奖| grant[发放实际中奖卡券]
+  win -->|未中奖| nothing[不发奖券]
+  grant --> record[记录该抽奖活动已参加]
+  nothing --> record
+  record --> pending
+  pending -->|没有| result([进入领取结果页])

@@ -1,0 +1,17 @@
+flowchart TD
+  result([进入领取结果页]) --> count{有已领取卡券？}
+  count -->|有| success[领取成功<br/>展示已领券数量]
+  count -->|没有| zero[领取结果<br/>明确本次未发券]
+  success --> received[按活动展示已领券<br/>中奖活动优先，其余按配置顺序]
+  received --> fold[首个活动保留展示<br/>其他已领活动折叠]
+  fold --> higher
+  zero --> higher[下方展示人群匹配的<br/>更高等级活动]
+  higher --> auth[先展示：认证后可领取<br/>活动名称、待解锁券、去认证]
+  auth --> bind[再展示：绑车后可领取<br/>活动名称、待解锁券、去绑车]
+  bind --> future[未开始子活动<br/>未开始状态及倒计时]
+  future --> more[页面末尾：查看更多优惠券]
+  more --> center([领券中心])
+  auth -->|去认证| upgrade[完成等级操作]
+  bind -->|去绑车| upgrade
+  upgrade --> back[返回活动政策页<br/>不自动发券]
+  back --> manual([再次点击参与<br/>重新执行校验])
