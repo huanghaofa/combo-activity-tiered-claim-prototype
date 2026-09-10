@@ -47,7 +47,7 @@
     return errors;
   }
   function queryCoupons(coupons,request){
-    // 本地查询替身：先应用服务端过滤语义，再统计总数和分页。不是已接入的接口。
+    // 活动中心后端的本地查询替身：读取卡券数据并过滤，再统计总数和分页。未接入真实接口。
     const size=Math.max(1,Number(request.pageSize)||4), page=Math.max(1,Number(request.page)||1);
     if(!request.scene)return {items:[],total:0,page,pageSize:size};
     const filtered=coupons.filter(c=>c.scene===request.scene)
