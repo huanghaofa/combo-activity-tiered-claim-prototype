@@ -3,34 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>组合活动 · 页面状态连线图</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>组合活动 · 页面状态与规则标注</title>
+  <link rel="stylesheet" href="styles.css?v=20260910-007">
 <style>.flow-link,.home-link{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid #d6d9df;border-radius:5px;color:#44566b;background:#fff;text-decoration:none;font-size:13px;white-space:nowrap}.flow-link:hover,.home-link:hover{background:#eef1f5}@media(max-width:760px){.flow-link,.home-link{padding:7px 8px;font-size:12px}}</style>
 </head>
 <body>
   <header class="toolbar">
-    <div class="brand"><span class="brand-mark" aria-hidden="true">⌘</span><div><h1>组合活动 · 页面状态连线图</h1><p>四组页面状态直接展示，沿箭头阅读</p></div></div>
+    <div class="brand"><span class="brand-mark" aria-hidden="true">⌘</span><div><h1>组合活动 · 页面状态与规则标注</h1><p>12 种页面状态 · 17 条评审规则 · 浅黄色为待确认</p></div></div>
+    <div class="document-links"><a class="flow-link" href="https://docs.qq.com/doc/DUENpdGtxTVdxUHJN" target="_blank" rel="noopener noreferrer">PRD ↗</a><a class="flow-link" href="https://docs.qq.com/sheet/DUG9hRFBXUkdERk5V" target="_blank" rel="noopener noreferrer">功能清单 ↗</a></div>
     <nav id="section-nav" aria-label="流程片区"></nav>
     <a class="home-link" href="../index.html">九月总导航</a>
     <a class="flow-link" href="flows.html">业务流程图</a>
     <button id="list-toggle" class="tool-button" aria-expanded="false" aria-controls="page-list">页面清单</button>
   </header>
-  <main id="viewport" tabindex="0" aria-label="无限画布，拖动平移，滚轮缩放">
-    <div id="world"><div id="sections"></div><svg id="connections" xmlns="http://www.w3.org/2000/svg" aria-label="页面之间的跳转条件"></svg><div id="nodes"></div></div>
+  <main id="viewport" tabindex="0" aria-label="无限画布，滚轮或拖动平移，按住Ctrl或Command加滚轮缩放">
+    <div id="world"><div id="sections"></div><svg id="connections" xmlns="http://www.w3.org/2000/svg" aria-label="页面之间的跳转条件"></svg><div id="nodes"></div><div id="annotations" aria-label="页面旁规则说明"></div></div>
     <div id="empty" hidden>页面状态正在准备中</div>
   </main>
   <aside id="page-list" hidden aria-label="页面清单">
     <div class="list-head"><strong>查找页面</strong><button id="list-close" class="icon-button" aria-label="关闭清单">×</button></div>
-    <label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索页面状态…" autocomplete="off"></label>
+    <label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索页面或规则编号 R01…" autocomplete="off"></label>
     <div id="search-results"></div>
   </aside>
   <footer class="canvas-tools">
-    <span class="canvas-hint">拖拽平移 · 滚轮缩放</span>
+    <span class="canvas-hint">滚轮 / 拖拽平移 · Ctrl / ⌘ + 滚轮缩放</span>
     <div class="zoom-tools"><button id="fit-all" title="查看整张图">全图</button><button id="zoom-out" aria-label="缩小">−</button><button id="zoom-reset" title="以100%查看当前位置">100%</button><button id="zoom-in" aria-label="放大">＋</button></div>
   </footer>
   <div id="status" class="status" aria-live="polite"></div>
   <script src="screen-manifest.js"></script>
   <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="annotations.js?v=20260910-007"></script>
+  <script src="app.js?v=20260910-007"></script>
 </body>
 </html>
