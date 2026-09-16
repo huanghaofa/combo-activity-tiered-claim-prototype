@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>卡券实例作废 · DFN 卡券中心</title>
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%231F2E3F'/%3E%3Ctext x='20' y='27' text-anchor='middle' font-size='23' fill='white' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E">
+ <link rel="stylesheet" href="assets/css/global.css"><link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+ <a class="skip-link" href="#app">跳转到主内容</a>
+ <aside class="app-sidebar" id="sidebar"><div class="brand"><strong>DFN</strong><span>数字运营管理</span></div><nav id="main-nav" aria-label="业务导航"></nav><div class="sidebar-footer"><span class="status-dot"></span>卡券中心 · 评审原型</div></aside>
+ <button class="sidebar-backdrop" id="sidebar-backdrop" aria-label="关闭导航" hidden></button>
+ <div class="app-layout">
+  <header class="topbar"><button class="icon-button" id="menu-toggle" aria-label="展开导航菜单" aria-expanded="false">☰</button><span class="topbar-title">工作台</span><div class="topbar-tools"><a href="../index.html">九月原型合集</a><a href="docs/interaction.html" id="review-link">评审说明</a><button id="demo-toggle" class="text-button" aria-controls="demo-settings" aria-expanded="false">演示设置</button><span class="topbar-role" id="header-role"></span></div></header>
+  <div class="breadcrumb" id="breadcrumb" aria-label="面包屑"></div>
+  <div class="review-strip"><span>静态演示，所有数据虚构</span><span class="review-id">DFN-REQ-20260916-002</span></div>
+  <section id="demo-settings" class="demo-settings" aria-label="演示设置" hidden></section>
+  <main id="app" tabindex="-1"></main>
+  <footer class="page-footer"><span id="footer-page">卡券实例作废</span><span>本地静态预览</span></footer>
+ </div>
+ <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+ <dialog id="void-confirm" aria-labelledby="confirm-title"></dialog>
+ <script src="mock/data.js"></script><script src="js/common.js"></script><script src="js/store.js"></script><script src="js/pages/void.js"></script><script src="js/pages/roles.js"></script><script src="js/app.js"></script><script src="js/nav.js"></script>
+</body>
+</html>
