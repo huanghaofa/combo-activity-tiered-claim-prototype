@@ -1,10 +1,11 @@
 (function(root){
 'use strict';
 var data={
- permission:'coupon.instance.void', initialRole:'operator',
+ currentUser:{name:'演示用户'},
+ permission:'coupon.instance.void', unfreezePermission:'coupon.instance.unfreeze', initialRole:'operator',
  roles:[
-  {id:'admin',name:'示例权限管理员',code:'DEMO_ADMIN',status:'启用',description:'用于演示角色权限配置',canManageRoles:true,permissions:['coupon.instance.void']},
-  {id:'operator',name:'示例运营角色',code:'DEMO_OPERATOR',status:'启用',description:'用于演示已授权的实例作废操作',canManageRoles:false,permissions:['coupon.instance.void']},
+  {id:'admin',name:'示例权限管理员',code:'DEMO_ADMIN',status:'启用',description:'用于演示角色权限配置',canManageRoles:true,permissions:['coupon.instance.void','coupon.instance.unfreeze']},
+  {id:'operator',name:'示例运营角色',code:'DEMO_OPERATOR',status:'启用',description:'用于演示已授权的实例解冻与作废操作',canManageRoles:false,permissions:['coupon.instance.void','coupon.instance.unfreeze']},
   {id:'viewer',name:'示例普通角色',code:'DEMO_VIEWER',status:'启用',description:'用于演示未授权时的访问限制',canManageRoles:false,permissions:[]}
  ],
  statuses:{unused:'未使用',frozen:'已冻结',expired:'已过期',redeemed:'已核销',voided:'已作废'},
@@ -15,6 +16,7 @@ var data={
   {name:'保养关怀券（虚构）',templateId:'DEMO-TPL-004',phone:'10000000004',vin:'TESTA123456789004',redemptionCode:'DEMO-VC-004',status:'expired',version:1},
   {name:'保养关怀券（虚构）',templateId:'DEMO-TPL-005',phone:'10000000005',vin:'TESTA123456789005',redemptionCode:'DEMO-VC-005',status:'redeemed',version:1},
   {name:'保养关怀券（虚构）',templateId:'DEMO-TPL-006',phone:'10000000006',vin:'TESTA123456789006',redemptionCode:'DEMO-VC-006',status:'voided',version:1},
+  {name:'过期冻结券（虚构）',templateId:'DEMO-TPL-008',phone:'10000000008',vin:'TESTA123456789008',redemptionCode:'DEMO-VC-008',status:'frozen',version:1},
   {name:'重复组合示例券 A（虚构）',templateId:'DEMO-TPL-MULTI',phone:'10000000007',vin:'TESTA123456789007',redemptionCode:'DEMO-VC-MULTI',status:'unused',version:1},
   {name:'重复组合示例券 B（虚构）',templateId:'DEMO-TPL-MULTI',phone:'10000000007',vin:'TESTA123456789007',redemptionCode:'DEMO-VC-MULTI',status:'unused',version:1}
  ],
@@ -27,7 +29,8 @@ var data={
   {id:'wrong-template',label:'错误组合 · 模板 ID 不匹配',templateId:'DEMO-TPL-001',redemptionCode:'DEMO-VC-001',identity:'phone',override:{templateId:'DEMO-TPL-WRONG'}},
   {id:'wrong-code',label:'错误组合 · 核销码不匹配',templateId:'DEMO-TPL-001',redemptionCode:'DEMO-VC-001',identity:'phone',override:{redemptionCode:'DEMO-VC-WRONG'}},
   {id:'multiple',label:'异常组合 · 匹配多个实例',templateId:'DEMO-TPL-MULTI',redemptionCode:'DEMO-VC-MULTI',identity:'both'},
-  {id:'frozen',label:'状态示例 · 已冻结',templateId:'DEMO-TPL-003',redemptionCode:'DEMO-VC-003',identity:'phone'},
+  {id:'frozen',label:'状态示例 · 已冻结（有效期内）',templateId:'DEMO-TPL-003',redemptionCode:'DEMO-VC-003',identity:'phone'},
+  {id:'frozen-expired',label:'状态示例 · 已冻结（已超期）',templateId:'DEMO-TPL-008',redemptionCode:'DEMO-VC-008',identity:'phone'},
   {id:'expired',label:'状态示例 · 已过期',templateId:'DEMO-TPL-004',redemptionCode:'DEMO-VC-004',identity:'phone'},
   {id:'redeemed',label:'状态示例 · 已核销',templateId:'DEMO-TPL-005',redemptionCode:'DEMO-VC-005',identity:'phone'},
   {id:'voided',label:'状态示例 · 已作废',templateId:'DEMO-TPL-006',redemptionCode:'DEMO-VC-006',identity:'phone'}
@@ -37,9 +40,12 @@ var data={
   {id:'failure',label:'提交失败',description:'模拟明确失败，实例保持原状态。'},
   {id:'unknown',label:'结果未知',description:'模拟本地已处理但响应丢失；不显示成功，需重新核验。'},
   {id:'revoke',label:'提交时权限撤回',description:'模拟权限在提交前被撤回，重新鉴权后阻断。'},
-  {id:'stale',label:'提交时状态变化',description:'模拟实例状态或版本变化，阻断本次旧结果提交；重新定位后，已冻结仍可作废。'}
+  {id:'stale',label:'提交时状态变化',description:'模拟实例状态或版本变化，阻断本次旧结果提交；重新定位后再选择操作。'}
  ]
 };
+// 按载入时间生成虚构有效期，保证两种冻结场景可持续演示。
+var demoNow=Date.now(),day=86400000;
+data.coupons.forEach(function(x){x.validFrom=new Date(demoNow-30*day).toISOString();x.validUntil=new Date(demoNow+(x.status==='expired'||x.templateId==='DEMO-TPL-008'?-1:30)*day).toISOString();});
 if(typeof module==='object'&&module.exports) module.exports=data;
 root.DFNMockData=data;
 })(typeof window==='object'?window:globalThis);
